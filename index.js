@@ -9,6 +9,10 @@ require('./services/passport');
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -20,6 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 const dotenv = require('dotenv');
 dotenv.config();
