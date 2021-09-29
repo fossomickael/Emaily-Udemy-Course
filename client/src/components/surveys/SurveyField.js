@@ -1,9 +1,12 @@
 import React from 'react';
 
-export const SurveyField = () => {
+export const SurveyField = ({ input, label }) => {
+  console.log(label);
   return (
     <div>
-      <input />
+      <label>{label}</label>
+  
+      <input {...input} />
     </div>
   );
 };
